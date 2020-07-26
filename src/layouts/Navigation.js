@@ -1,18 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import "../styles/Navigation.sass"
-
-// using list -> this code will be easier to maintain
-
 const list = [
 
-    { name: "description", path: "/", exact: true },
-    { name: "warehouse state", path: "/warehouse-state", exact: true },
-    { name: "sold products", path: "/sold", exact: true },
-    { name: "add product", path: "/add", exact: true },
-    { name: "sell product", path: "/sell", exact: true },
-    { name: "statistics", path: "/stats", exact: true },
+    { name: "Description", path: "/", exact: true },
+    { name: "product list (view mode)", path: "/product-list-view", exact: false },
+    { name: "transaction list (view mode)", path: "/transaction-list-view", exact: false },
+
+    { name: "add new product (change mode)", path: "/add-new-product", exact: false },
+    { name: "sell product (change mode)", path: "/sell-product-list", exact: false },
+    { name: "product list (change mode)", path: "/product-list", exact: false }
 
 ]
 
@@ -24,12 +21,11 @@ const Navigation = () => {
 
             <li key={item.name}>
 
-                <NavLink to={item.path}>{item.name}</NavLink>
+                <NavLink to={item.path} exact={item.exact ? true : false}>{item.name}</NavLink>
 
             </li>
         )
     })
-
 
     return (
 

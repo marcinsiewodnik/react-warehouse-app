@@ -1,7 +1,5 @@
-import Warehouse from "../data/Warehouse"
-
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Header from './Header'
 import Navigation from './Navigation'
@@ -12,92 +10,241 @@ import '../styles/App.sass';
 
 class App extends React.Component {
 
-  // Model -> our data
-
-  warehouse = new Warehouse();
-
-  // application state
-
   state = {
 
-    products: []
-
+    products: [],
+    transactions: [],
   }
 
-  // Lifecycle method
+  id = {
+
+    nextProductId: 0,
+    nextTransactionId: 0,
+  }
+
+  generateNextProductId = () => {
+
+    const id = this.id.nextProductId++;
+
+    return id;
+  }
+
+  generateNextTransactionId = () => {
+
+    const id = this.id.nextTransactionId++;
+
+    return id;
+  }
+
+  // Fetching data
 
   componentDidMount() {
 
-    this.updateState();
+    const products = this.fetchProducts();
+    const transactions = this.fetchTransactions();
+
+    this.setState({ products, transactions })
   }
 
-  // Method with setState() inside -> it invokes rendering
+  fetchProducts = () => {
 
-  updateState() {
+    return [
+      {
 
-    this.setState((prevState) => {
+        id: this.generateNextProductId(),
+        name: 'orange juice',
+        category: 'drinks',
+        unitPrice: 4,
+        quantityInStock: 5
 
-      return { products: [...this.warehouse.products] }
+      },
 
-    })
+      {
+        id: this.generateNextProductId(),
+        name: 'cookie',
+        category: 'sweets',
+        unitPrice: 2,
+        quantityInStock: 5
+
+      },
+
+      {
+
+        id: this.generateNextProductId(),
+        name: 'apple',
+        category: 'fruits',
+        unitPrice: 3,
+        quantityInStock: 5
+
+      }
+
+    ]
+
+  }
+
+  fetchTransactions = () => {
+
+    return [
+
+      {
+        id: this.generateNextTransactionId(),
+        type: "add",
+        productId: 0,
+        productName: "orange juice",
+        productCategory: "drinks",
+        productUnitPrice: 4,
+        quantity: 5,
+      },
+
+      {
+        id: this.generateNextTransactionId(),
+        type: "add",
+        productId: 1,
+        productName: "cookie",
+        productCategory: "sweet",
+        productUnitPrice: 2,
+        quantity: 5,
+      },
+      {
+        id: this.generateNextTransactionId(),
+        type: "add",
+        productId: 1,
+        productName: "apple",
+        productCategory: "fruits",
+        productUnitPrice: 3,
+        quantity: 5,
+      },
+
+    ]
+
+
   }
 
   // Methods for managing the state
 
-  addProduct = (id, name, category, quantity, unitPrice) => {
+  addNewProduct = (name, category, unitPrice, id = this.generateNextProductId()) => {
 
-    const added = this.warehouse.add(id, name, category, quantity, unitPrice);
+    // Add a new product, without quantity
 
-    if (added) {
+    const newProduct = { id, name, category, unitPrice, quantityInStock: 0 }
 
-      this.updateState();
+    this.setState((prevState) => ({ products: prevState.products.concat(newProduct) }));
+  }
 
-    } else {
+  add = (transactionQuantity, transactionDate, productId, productName, productCategory, productUnitPrice, transactionId = this.generateNextTransactionId()) => {
 
-      alert("Invalid input");
-    }
+    // Add quantity to an existing product
+
+    const newTransaction = { id: transactionId, type: "add", quantity: transactionQuantity, date: transactionDate, productId, productName, productCategory, productUnitPrice }
+
+    this.setState((prevState) => {
+
+      const products = prevState.products.map(product => {
+
+        // Create a new instance
+
+        const newProduct = {
+
+          id: product.id,
+          name: product.name,
+          category: product.category,
+          unitPrice: product.unitPrice,
+          quantityInStock: product.quantityInStock,
+
+
+        }
+
+        // Increase quantity of a given product
+
+        if (product.id === productId) {
+
+          newProduct.quantityInStock += transactionQuantity;
+
+        }
+
+        return newProduct;
+
+      });
+
+
+      return ({ products, transactions: prevState.transactions.concat(newTransaction) });
+    });
+  }
+
+  sell = (transactionQuantity, transactionDate, productId, productName, productCategory, productUnitPrice, transactionId = this.generateNextTransactionId()) => {
+
+    // Sell -> decrease quantity of a given product and create a sell transaction
+
+    const newTransaction = { id: transactionId, type: "sell", quantity: transactionQuantity, date: transactionDate, productId, productName, productCategory, productUnitPrice }
+
+    this.setState((prevState) => {
+
+      const products = prevState.products.map(product => {
+
+        if (product.id === productId) {
+
+          product.quantityInStock -= transactionQuantity;
+        }
+
+        return product;
+
+      });
+
+      return ({ products, transactions: prevState.transactions.concat(newTransaction) });
+    });
 
   }
 
-  sellProduct = (id, quantity) => {
+  changeProduct = (id, newName, newCategory, newPrice) => {
 
-    const sold = this.warehouse.sell(id, quantity);
+    this.setState((prevState) => ({
 
-    if (sold) {
+      products: prevState.products.map(product => {
 
-      this.updateState();
+        if (product.id === id) {
 
-    } else {
+          product.name = newName;
+          product.category = newCategory;
+          product.unitPrice = newPrice;
 
-      alert("Invalid input")
-    }
+        }
+
+        return product;
+      })
+    }))
   }
 
-  changeQuantity = (id, quantity) => {
-
-    const changed = this.warehouse.changeQuantity(id, quantity);
-
-    if (changed) {
-
-      this.updateState();
-
-    } else {
-
-      alert("Invalid input");
-    }
-  }
+  // Rendering
 
   render() {
+
+    // Data flow -> we pass products, transactions, methods to managing the state
 
     return (
 
       <Router basename={process.env.PUBLIC_URL}>
 
         <div className="app">
+
           <header>{<Header />}</header>
+
           <main>
             <aside>{<Navigation />}</aside>
-            <section className="page">{<Page products={this.state.products} />}</section>
+            <section className="page">
+
+              {<Page
+
+                products={this.state.products}
+                transactions={this.state.transactions}
+                addNewProduct={this.addNewProduct}
+                add={this.add}
+                sell={this.sell}
+                changeProduct={this.changeProduct}
+
+              />}
+
+            </section>
+
           </main>
           <footer>{<Footer />}</footer>
         </div>

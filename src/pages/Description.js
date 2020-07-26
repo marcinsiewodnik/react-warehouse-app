@@ -6,10 +6,17 @@ const Description = () => {
 
         <div>
 
-            <p>This is a warehouse application. It stores information about products. You can add a new product, change quantity of existing products and sell an existing product.</p>
+            <h2>Description</h2>
+
+            <div>
+
+                <p>Functionality</p>
+
+            </div>
 
         </div>
-    )
+    );
+
 }
 
 export default Description;

@@ -1,13 +1,12 @@
 import React from 'react';
-import "../styles/Header.sass"
+
 
 const Header = () => {
-
 
     return (
 
         <div>
-            <p>Header</p>
+            <p>Warehouse app</p>
         </div>
     );
 }
