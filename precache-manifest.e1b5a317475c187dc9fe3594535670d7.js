@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8ca26f7e57728c19faaaefa1104b5c41",
+    "revision": "3ea01ad7903322ad8e195f471287972d",
     "url": "/react-warehouse-app/index.html"
   },
   {
-    "revision": "71c9e8e170159f0f64b3",
-    "url": "/react-warehouse-app/static/css/main.9da3a4df.chunk.css"
+    "revision": "d980912edadc26c717b0",
+    "url": "/react-warehouse-app/static/css/main.2eb880ca.chunk.css"
   },
   {
     "revision": "e11438cafe04d1accc5e",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-warehouse-app/static/js/2.764d1180.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "71c9e8e170159f0f64b3",
-    "url": "/react-warehouse-app/static/js/main.709ecf9a.chunk.js"
+    "revision": "d980912edadc26c717b0",
+    "url": "/react-warehouse-app/static/js/main.ae3ba719.chunk.js"
   },
   {
     "revision": "3c45100e4575dd9113cf",
