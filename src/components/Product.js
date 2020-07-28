@@ -213,13 +213,21 @@ class Product extends React.Component {
 
                 <p> <span>Id: </span> <span>{id}</span>  </p>
                 <p>
-                    <label htmlFor="">Name</label>
+                    <label htmlFor="">Name </label>
                     <input type="text" name="name" value={name} onChange={this.handleChange} />
-                    {this.state.validation.incorrectName && <span>Name has to be at least 5 characters long.</span>}
+
                 </p>
 
+                {this.state.validation.incorrectName &&
+
+                    <p>
+                        <span>Name has to be at least 5 characters long.</span>
+                    </p>
+
+                }
+
                 <p>
-                    <label htmlFor="">Category</label>
+                    <label htmlFor="">Category </label>
                     <select type="checkbox" name="category" value={category} onChange={this.handleChange}>
 
                         <option value="fruits">fruits</option>
@@ -232,24 +240,24 @@ class Product extends React.Component {
                 </p>
 
                 <p>
-                    <label htmlFor="">Price</label>
-                    <button disabled={unitPrice === 0} onClick={this.handleDecreasePrice}>-</button>
-                    <span style={unitPrice < 0 ? { opacity: 0.3 } : {}}>{unitPrice}</span>
-                    <button onClick={this.handleIncreasePrice}>+</button>
+                    <label htmlFor="">Price </label>
+                    <button className="decrease" disabled={unitPrice === 0} onClick={this.handleDecreasePrice}>-</button>
+                    <span className="span-value" style={unitPrice < 0 ? { opacity: 0.3 } : {}}>{unitPrice}</span>
+                    <button className="decrease" onClick={this.handleIncreasePrice}>+</button>
                 </p>
 
                 <p>
 
-                    <label htmlFor="">Quantity</label>
-                    <button disabled={quantityInStock === initialQuantity} onClick={this.handleRemoveProduct}>-</button>
-                    <span style={quantityInStock <= initialQuantity ? { opacity: 0.3 } : {}}>{quantityInStock}</span>
-                    <button onClick={this.handleAddProduct}>+</button>
+                    <label htmlFor="">Quantity </label>
+                    <button className="decrease" disabled={quantityInStock === initialQuantity} onClick={this.handleRemoveProduct}>-</button>
+                    <span className="span-value" style={quantityInStock <= initialQuantity ? { opacity: 0.3 } : {}}>{quantityInStock}</span>
+                    <button className="increase" onClick={this.handleAddProduct}>+</button>
 
                 </p>
 
                 <p className="p-button">
 
-                    <button disabled={(!changeDetected) || incorrectName} onClick={this.handleClick}>Save changes</button>
+                    <button className="btn-save" disabled={(!changeDetected) || incorrectName} onClick={this.handleClick}>Save changes</button>
 
                 </p>
 

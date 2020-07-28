@@ -73,14 +73,14 @@ class SellProduct extends React.Component {
                 <p><span>Quantity in Stock: </span><span>{quantityInStock}</span></p>
 
                 <p>
-                    <label htmlFor="">Quantity</label>
-                    <button disabled={quantityToSell === 0} onClick={this.handleRemoveFromSell}>-</button>
-                    <span style={quantityToSell === 0 ? { opacity: 0.3 } : {}}>{quantityToSell}</span>
-                    <button disabled={quantityToSell === quantityInStock} onClick={this.handleAddtoSell}>+</button>
+                    <label htmlFor="">Quantity </label>
+                    <button className="decrease" disabled={quantityToSell === 0} onClick={this.handleRemoveFromSell}>-</button>
+                    <span className="span-value" style={quantityToSell === 0 ? { opacity: 0.3 } : {}}>{quantityToSell}</span>
+                    <button className="increase" disabled={quantityToSell === quantityInStock} onClick={this.handleAddtoSell}>+</button>
                 </p>
 
                 <p>
-                    <button disabled={!changeDetected || quantityToSell === 0} onClick={this.handleSell}>Sell product</button>
+                    <button className="btn-sell" disabled={!changeDetected || quantityToSell === 0} onClick={this.handleSell}>Sell product</button>
                 </p>
 
             </div>

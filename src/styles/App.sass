@@ -1,6 +1,5 @@
-html 
-    font-family: 'Roboto', sans-serif
- 
+// page structure
+
 div.app 
     
     display: flex
@@ -12,7 +11,9 @@ div.app
 
         padding: 20px
         text-align: center
-        background-color: #333
+
+        background-color: #28304E;
+        color: #8390A4;
     
     main 
 
@@ -20,22 +21,17 @@ div.app
 
         display: flex
         flex-direction: column
-    
-        background-color: #ddd
 
         aside 
-
-            border-bottom: 2px solid black
-            background-color: #ddd
-
             nav
                 a
                     display: block
                     padding: 15px
-                    text-decoration: none
-                    text-transform: uppercase
-                    color: black
 
+                    text-decoration: none
+                    color: black
+                &.active
+                    background-color: #E9ECEF
         .page 
 
             flex-grow: 1
@@ -44,77 +40,103 @@ div.app
 
         padding: 20px
         text-align: center
-        background-color: #333
-
-
-.active
-    background-color: royalblue 
-
-.add-new-product 
-
-    .form
-
-        >p 
-
-            display: flex
-            padding: 10px
-
-            label
-                flex-basis: 30%
-                display: flex
-                justify-content: flex-end
-                align-items: center
-                padding-right: 20px
-            input
-                max-width: 300px
-                flex-basis: 70%
-                line-height: 50px
-                height: 50px
-            select
-                max-width: 300px
-                flex-basis: 70%
-                line-height: 50px
-                height: 50px
-            .price-wrapper
-
-                display: flex
-                max-width: 300px
-                flex-basis: 70%
-                button
-
-                    height: 50px
-                    width: 50px
-                    border: none
-                span
-                    
-                    height: 50px
-                    line-height: 50px
-                    text-align: center
-                    width: 50px
-        .p-error, .p-button
-            justify-content: center
-            align-items: center
-        .p-button
-            button
-                padding: 10px 20px
-        
-.product-view, .transaction-view
-    
-    padding: 20px
-    border-bottom: 2px solid black
-
-    background-color: #ddd
+        background-color: #28304E
+        color: #8390A4
 
 h2 
 
     padding: 20px
     text-align: center
-    background-color: #666
+    font-weight: normal
 
-.product
+    font-size: 16px
+
+    background-color: #28304E
+    color: #8390A4
+
+
+// Description 
+
+.description
     padding: 20px
-    border-bottom: 2px solid black
 
-    .product-sell 
-        padding: 20px
-        border-bottom: 2px solid black
+// Product list, transaction list
+
+.product-view, .transaction-view, .product-sell, .product
+    
+    padding: 20px
+    margin: 20px
+
+    background-color: #E9ECEF
+    box-shadow: 0 0 5px 0 #28304E
+
+    p
+        padding-bottom: 5px 
+
+// Add new product, sell product, product list -> common elements -> button       
+
+button
+    background-color: #28304E
+    color: #E9ECEF
+    border: none
+button:disabled
+    background-color: #8390A4
+
+.decrease, .increase
+    height: 30px
+    width: 30px
+.span-value
+    display: inline-block
+    height: 30px
+    width: 30px
+    text-align: center
+
+.btn-sell, .btn-save, .btn-add-product
+    height: 30px
+    padding-left: 20px
+    padding-right: 20px
+
+// Add new product -> form
+
+.add-new-product 
+    .form
+        max-width: 500px
+        margin: 0 auto
+        >p 
+            display: flex
+            padding: 10px
+            label
+                flex-basis: 40%
+                display: flex
+                justify-content: flex-end
+
+                padding-right: 20px
+                align-items: center
+
+            input, select
+                flex-basis: 60%
+
+                height: 50px
+                line-height: 50px
+            &:last-child
+                justify-content: center 
+                align-items: center
+
+
+   
+        
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+

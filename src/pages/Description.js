@@ -4,11 +4,11 @@ const Description = () => {
 
     return (
 
-        <div>
+        <div >
 
             <h2>Description</h2>
 
-            <div>
+            <div className="description">
 
                 <p>Functionality</p>
 

@@ -116,7 +116,6 @@ class AddNewProduct extends React.Component {
 
                     }
 
-
                     <p>
                         <label htmlFor="category">Category</label>
                         <select id="category" name="category" value={category} onChange={this.handleChange}>
@@ -131,19 +130,21 @@ class AddNewProduct extends React.Component {
                     </p>
 
                     <p>
-                        <label htmlFor="">Price</label>
 
-                        <p className="price-wrapper">
-                            <button disabled={unitPrice === 0} onClick={this.handleDecreasePrice}>-</button>
-                            <span style={unitPrice < 0 ? { opacity: 0.3 } : {}}>{unitPrice}</span>
-                            <button onClick={this.handleIncreasePrice}>+</button>
+                        <label htmlFor="">Price</label>
+                        <p className="change-panel">
+
+
+                            <button className="decrease" disabled={unitPrice === 0} onClick={this.handleDecreasePrice}>-</button>
+                            <span className="span-value" style={unitPrice < 0 ? { opacity: 0.3 } : {}}>{unitPrice}</span>
+                            <button className="increase" onClick={this.handleIncreasePrice}>+</button>
                         </p>
 
                     </p>
 
-                    <p className="p-button">
+                    <p>
 
-                        <button disabled={incorrectName} onClick={this.handleSubmit} type="submit">Add product</button>
+                        <button className="btn-add-product" disabled={incorrectName} onClick={this.handleSubmit} type="submit">Add product</button>
                     </p>
 
                 </div>
