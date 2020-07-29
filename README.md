@@ -1,68 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React warehouse app 
 
-## Available Scripts
+I created this project from scratch, from desing phase to implementation. I also analized requirements, which this system has to implement. 
 
-In the project directory, you can run:
+This project is written in React. This is a warehouse app. I focused on implementing React concepts and I used Create React app environment.
 
-### `npm start`
+Technologies used: React, React router, javascript ES6
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Functionality
+1. You can add a new item (add new product tab), the name has to meet certain requirements, you can choose category, and set the price. If the name is empty or does not meet the requirements, the add product button will be disable. Here you can only add an item. To increase quantity, click product list (change mode) tab.
+2. You can change the properties of a given item by clicking on product list (change mode) tab. For instance you can increse the quantity of the product, change name, category or price. These fields have to meet certain requirements, if they do not, the save changes button will be disabled.
+3. Finally you can sell a given product by clicking on the sell product (change mode) tab. You can not sell more products then there are in the warehouse. The interface will not allow to do this.
+4. When you increase the quantity on the product list (change mode) tab or when you sell a given product on the sell product (change mode) page, a transaction is generated and added to the system. You can see these new generated transactions on the transaction list (view mode) tab. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+All the logic is created in React, on the browser side. Data is not stored in a database. I showed mongo db skills in another project.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### See live
+https://marcinsiewodnik.github.io/react-warehouse-app/
