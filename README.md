@@ -15,7 +15,3 @@ Data is not stored in a database. I showed mongo db skills in another project. I
 
 ### See live
 https://marcinsiewodnik.github.io/react-warehouse-app/
-<<<<<<< HEAD
-
-=======
->>>>>>> 3f4e77b5e2a788bf4d93d651e0f98585959fea70
